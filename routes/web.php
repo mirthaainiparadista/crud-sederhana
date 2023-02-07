@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
+use App\Models\Books;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +16,8 @@ use App\Http\Controllers\BooksController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index',[
+        "books"=>Books::all()
+    ]);
 });
 Route::resource('book', BooksController::class);
