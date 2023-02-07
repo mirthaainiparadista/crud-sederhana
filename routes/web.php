@@ -21,5 +21,8 @@ Route::get('/', function () {
     ]);
 });
 Route::get('/create', [BooksController::class, 'create']);
-Route::get('/show/{book:id}', [BooksController::class, 'show']);
 Route::post('/book', [BooksController::class, 'store']);
+Route::get('/show/{book:id}', [BooksController::class, 'show']);
+Route::get('/edit/{book:id}', [BooksController::class, 'edit']);
+Route::post('/edit/{book:id}', [BooksController::class, 'update']);
+Route::post('/delete/{book:id}', [BooksController::class, 'destroy']);

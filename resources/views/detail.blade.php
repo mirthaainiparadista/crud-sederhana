@@ -6,11 +6,10 @@
         <div class="container mt-5">
             <h2 class="text-capitalize">{{ $book->name }}</h2>
             <a href="/" class="btn btn-success"><span data-feather='arrow-left'></span>Back To All My books</a>
-            <a href="/" class="btn btn-warning"><span data-feather='edit'></span> Edit</a>
-            <form action="/" method="book" class="d-inline">
-                @method('delete')
+            <a href="/edit/{{ $book->id }}" class="btn btn-warning"><span data-feather='edit'></span> Edit</a>
+            <form action="/delete/{{ $book->id }}" method="post" class="d-inline">
                 @csrf
-                <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus produk?')">
+                <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus buku?')">
                     <span data-feather='x-circle'></span> Delete
                 </button>
             </form>

@@ -7,7 +7,7 @@
                 <h2>CRUD - Manajemen Data Buku Perpustakaan</h2>
             </div>
             <div class="float-right my-2">
-                <a class="btn btn-success" href="/create"> Create New User</a>
+                <a class="btn btn-success" href="/create"> Create New Book</a>
             </div>
         </div>
     </div>
@@ -31,16 +31,16 @@
             <td>{{ $book->name }}</td>
             <td>{{ $book->author }}</td>
             <td>
-                <form action="/book/destroy" method="POST">
+                <form action="/delete/{{ $book->id }}" method="POST">
    
                     <a class="btn btn-info" href="/show/{{ $book->id }}">Show</a>
     
-                    <a class="btn btn-primary" href="/book/edit">Edit</a>
+                    <a class="btn btn-primary" href="/edit/{{ $book->id }}">Edit</a>
    
                     @csrf
-                    @method('DELETE')
-      
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus buku?')">
+                        <span data-feather='x-circle'></span> Delete
+                    </button>
                 </form>
             </td>
         </tr>

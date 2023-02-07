@@ -35,12 +35,38 @@ class BooksController extends Controller
         Books::create($request->all());
 
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect('/')->with('success','Produk Berhasil Ditambahkan');
+        return redirect('/')->with('success','Buku Berhasil Ditambahkan');
     }
 
     public function show($id)
     {
         $book = Books::find($id);
         return view('detail', ["book"=>$book]);
+    }
+    public function edit($id)
+    {
+        $book = Books::find($id);
+        return view('edit', ["book"=>$book]);
+    }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'author' => 'required',
+            'tahun' => 'required',
+            'sinopsis' => 'required',
+        ]);
+
+        //fungsi eloquent untuk menambah data
+        Books::find($id)->update($request->all());
+        
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect('/')->with('success','Buku Berhasil Diubah');
+    }
+    public function destroy($id)
+    {
+        Books::destroy($id);
+
+        return redirect('/')->with('success','Buku Berhasil Dihapus');
     }
 }
