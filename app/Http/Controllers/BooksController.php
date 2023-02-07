@@ -3,88 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Books;
-use App\Http\Requests\StoreBooksRequest;
-use App\Http\Requests\UpdateBooksRequest;
+use Illuminate\Http\Request;
 
 class BooksController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
     public function index()
     {
-        return view('index',[
+        return view("index",[
             "books"=>Books::all(),
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('create',[
-            "books"=>Books::all(),
+        return view("create",[
+            
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreBooksRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreBooksRequest $request)
+    public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required',
+            'author' => 'required',
+            'tahun' => 'required',
+            'sinopsis' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Books  $books
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Books $books)
-    {
-        //
-    }
+        //fungsi eloquent untuk menambah data
+        Books::create($request->all());
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Books  $books
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Books $books)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBooksRequest  $request
-     * @param  \App\Models\Books  $books
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateBooksRequest $request, Books $books)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Books  $books
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Books $books)
-    {
-        //
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect('/')->with('success','Produk Berhasil Ditambahkan');
     }
 }

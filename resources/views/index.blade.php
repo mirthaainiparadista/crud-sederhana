@@ -7,7 +7,7 @@
                 <h2>CRUD - Manajemen Data Buku Perpustakaan</h2>
             </div>
             <div class="float-right my-2">
-                <a class="btn btn-success" href="book/create"> Create New User</a>
+                <a class="btn btn-success" href="/create"> Create New User</a>
             </div>
         </div>
     </div>
@@ -20,22 +20,22 @@
    
     <table class="table table-striped table-sm">
         <tr>
-            <th>No</th>
+            <th>ID</th>
             <th>Name</th>
             <th>Author</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($books as $book)
         <tr>
-            <td>{{ ++$i }}</td>
+            <td>{{ $book->id }}</td>
             <td>{{ $book->name }}</td>
             <td>{{ $book->author }}</td>
             <td>
-                <form action="book/destroy" method="POST">
+                <form action="/book/destroy" method="POST">
    
-                    <a class="btn btn-info" href="book/show">Show</a>
+                    <a class="btn btn-info" href="/book/show">Show</a>
     
-                    <a class="btn btn-primary" href="book/edit">Edit</a>
+                    <a class="btn btn-primary" href="/book/edit">Edit</a>
    
                     @csrf
                     @method('DELETE')
