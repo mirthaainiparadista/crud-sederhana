@@ -5,6 +5,8 @@
         <div class="col-lg-12 margin-tb">
             <div class="pull-left mt-2">
                 <h2>CRUD - Manajemen Data Buku Perpustakaan</h2>
+                <h6>PPL Prak I2</h6>
+                <h6>Mirtha Aini Paradista --- 082011633013</h6>
             </div>
             <div class="float-right my-2">
                 <a class="btn btn-success" href="/create"> Create New Book</a>
@@ -47,7 +49,6 @@
         @endforeach
     </table>
     <div class="text-center">
-        {{-- {!! $books->links() !!} --}}
     </div>
-      
+  
 @endsection
