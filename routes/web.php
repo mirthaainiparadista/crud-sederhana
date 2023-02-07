@@ -21,4 +21,5 @@ Route::get('/', function () {
     ]);
 });
 Route::get('/create', [BooksController::class, 'create']);
+Route::get('/show/{book:id}', [BooksController::class, 'show']);
 Route::post('/book', [BooksController::class, 'store']);

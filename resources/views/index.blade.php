@@ -33,7 +33,7 @@
             <td>
                 <form action="/book/destroy" method="POST">
    
-                    <a class="btn btn-info" href="/book/show">Show</a>
+                    <a class="btn btn-info" href="/show/{{ $book->id }}">Show</a>
     
                     <a class="btn btn-primary" href="/book/edit">Edit</a>
    

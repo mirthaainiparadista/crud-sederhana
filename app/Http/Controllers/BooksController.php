@@ -37,4 +37,10 @@ class BooksController extends Controller
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect('/')->with('success','Produk Berhasil Ditambahkan');
     }
+
+    public function show($id)
+    {
+        $book = Books::find($id);
+        return view('detail', ["book"=>$book]);
+    }
 }
